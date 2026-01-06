@@ -1,3 +1,4 @@
 ./backend/cache/
 .idea
 .DS_Store
+.env
