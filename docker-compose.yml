@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      - BUNGIE_API_KEY=${BUNGIE_API_KEY}
+      - PORT=8080
+      - CACHE_DIR=/app/cache
+    volumes:
+      - manifest-cache:/app/cache
+    expose:
+      - "8080"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  manifest-cache:
